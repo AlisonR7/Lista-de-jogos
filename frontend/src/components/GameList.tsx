@@ -9,8 +9,8 @@ const GameList: React.FC<GameListProps> = ({ games, onDelete, onEdit }) => {
           <h3>{game.title}</h3>
           <p>{game.description}</p>
           <p>{game.genre}</p>
-          <button onClick={() => onEdit(game.id)}>Edit</button>
-          <button onClick={() => onDelete(game.id)}>Delete</button>
+          <button onClick={() => onEdit(game.id!)}>Edit</button>
+          <button onClick={() => onDelete(game.id!)}>Delete</button>
         </div>
       ))}
     </div>

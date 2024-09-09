@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { GameFormProps, Game } from '../types/types';
 
 const GameForm: React.FC<GameFormProps> = ({ onSubmit, initialData }) => {
+  
   const [formData, setFormData] = useState<Game>(
-      initialData || (() => ({ id: 0, title: '', description: '', genre: '', releaseDate: '' }))
+    initialData || { title: '', description: '', genre: '', releaseDate: '' } 
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -15,7 +16,7 @@ const GameForm: React.FC<GameFormProps> = ({ onSubmit, initialData }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    onSubmit(formData); 
   };
 
   return (

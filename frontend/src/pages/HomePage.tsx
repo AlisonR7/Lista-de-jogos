@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -59,7 +58,6 @@ const HomePage: React.FC = () => {
       <LinksContainer>
         <StyledLink to="/listpage">Ir para Lista de Jogos</StyledLink>
         <StyledLink to="/create">Adicionar Novo Jogo</StyledLink>
-        <StyledLink to="/update">Atualizar Jogo Existente</StyledLink>
       </LinksContainer>
     </Container>
   );
