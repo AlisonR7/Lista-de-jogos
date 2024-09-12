@@ -1,0 +1,19 @@
+.update-page {
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    color: #ffcc00;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  

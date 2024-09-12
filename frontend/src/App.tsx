@@ -14,7 +14,7 @@ const App: React.FC = () => {
         <Route path="/listpage" element={<ListPage />} />
         <Route path="/create" element={<CreatePage />} />
         <Route path="/update/:id" element={<UpdatePage />} />
-        <Route path="*" element={<NotFound />} />  {/* Rota para página não encontrada */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

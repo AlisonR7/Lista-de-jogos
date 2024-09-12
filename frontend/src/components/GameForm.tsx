@@ -1,39 +1,41 @@
-import React, { useState } from 'react';
-import { GameFormProps, Game } from '../types/types';
+import React from 'react';
+import { Game } from '../types/types';
 
-const GameForm: React.FC<GameFormProps> = ({ onSubmit, initialData }) => {
-  
-  const [formData, setFormData] = useState<Game>(
-    initialData || { title: '', description: '', genre: '', releaseDate: '' } 
+interface GameFormProps {
+  initialData?: Game;
+  onSubmit: (game: Game) => void;
+}
+
+const GameForm: React.FC<GameFormProps> = ({ initialData, onSubmit }) => {
+  const [formData, setFormData] = React.useState<Game>(
+    initialData || { title: '', description: '', genre: '', valor: '', isMultiplayer: false, releaseDate: '' }
   );
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type, checked } = e.target as HTMLInputElement;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: type === 'checkbox' ? checked : value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData); 
+    onSubmit(formData);
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Título" />
+      <input type="text" name="description" value={formData.description} onChange={handleChange} placeholder="Descrição" />
+      <input type="text" name="genre" value={formData.genre} onChange={handleChange} placeholder="Gênero" />
+      <input type="number" name="valor" value={formData.valor} onChange={handleChange} placeholder="Valor" />
+      <input type="date" name="releaseDate" value={formData.releaseDate} onChange={handleChange} />
       <label>
-        Title:
-        <input type="text" name="title" value={formData.title} onChange={handleChange} />
+        Multiplayer:
+        <input type="checkbox" name="isMultiplayer" checked={formData.isMultiplayer} onChange={handleChange} />
       </label>
-      <label>
-        Description:
-        <textarea name="description" value={formData.description} onChange={handleChange} />
-      </label>
-      <label>
-        Genre:
-        <input type="text" name="genre" value={formData.genre} onChange={handleChange} />
-      </label>
-      <button type="submit">Submit</button>
+      <button type="submit">Salvar</button>
     </form>
   );
 };
